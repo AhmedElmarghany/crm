@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Name: {{record.first_name|capfirst}} {{record.last_name|capfirst}}</h1>
+<p>Category: {{record.category}}</p>
+<p>phone: {{record.phone}}</p>
+{% endblock %}
