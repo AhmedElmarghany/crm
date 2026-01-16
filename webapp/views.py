@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .forms import CreateUserForm
+from .forms import CreateUserForm, LoginForm
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     return render(request, 'web/index.html')
@@ -14,3 +15,25 @@ def register(request):
     context = {'form': form}
 
     return render(request, 'web/register.html', context)
+
+
+def login(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request,  username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+
+    else:
+        form = LoginForm()
+
+    context = {'form': form}
+
+    return render(request, 'web/login.html', context)
+
