@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm, LoginForm, CreateRecordForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from .models import Record
 
 def index(request):
     return render(request, 'web/index.html')
@@ -41,7 +42,9 @@ def login(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'web/dashboard.html')
+    records = Record.objects.all()
+    context = {'records': records}
+    return render(request, 'web/dashboard.html', context)
 
 
 def logout(request):
