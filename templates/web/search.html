@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"># id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Tall</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Address</th>
+        <th scope="col">Join date</th>
+        <th scope="col">view</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if results %} {% for record in results %}
+      <tr>
+        <th scope="row">{{record.id}}</th>
+        <td>{{record.first_name|capfirst}} {{record.last_name|capfirst}}</td>
+        <td>{{record.category}}</td>
+        <td>{{record.phone}}</td>
+        <td>{{record.tall}}</td>
+        <td>{{record.weight}}</td>
+        <td>{{record.address}}</td>
+        <td>{{record.created_at}}</td>
+        <td>
+          <a
+            href="{% url 'view_record' record.id %}"
+            class="btn btn-outline-primary btn-sm align-start"
+            >view</a
+          >
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="9" class="text-center">
+          <strong>No results found for {{ query }}</strong>
+        </td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

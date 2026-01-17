@@ -3,6 +3,8 @@ from .forms import CreateUserForm, LoginForm, CreateRecordForm, UpdateRecordForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .models import Record
+from django.db.models import Q
+import logging
 
 def index(request):
     return render(request, 'web/index.html')
@@ -85,7 +87,7 @@ def update_record(request, record_id):
         form = UpdateRecordForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('/view/{}'.format(record_id))
     
     context = {
         'form': form
@@ -101,3 +103,16 @@ def delete_record(request, record_id):
     record.delete()
     return redirect('dashboard')
     
+
+
+logger = logging.getLogger(__name__)
+@login_required(login_url='login')
+def search(request):
+    query = request.GET.get('query')
+    results = []
+    try:
+        if query:
+            results = Record.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(id__icontains=query))
+    except Exception as e:
+        logger.error('Error during search %s', e)
+    return render(request, 'web/search.html', context={'results': results, 'query': query})

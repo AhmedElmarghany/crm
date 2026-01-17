@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Name: {{record.first_name|capfirst}} {{record.last_name|capfirst}}</h1>
-<p>Category: {{record.category}}</p>
-<p>phone: {{record.phone}}</p>
-<br>
-<a href="{% url 'update_record' record.id %}" class="btn btn-outline-dark">Edit</a>
-<a href="{% url 'delete_record' record.id %}" class="btn btn-outline-danger">Delete</a>
+<div class="container">
+    <h1>Name: {{record.first_name|capfirst}} {{record.last_name|capfirst}}</h1>
+    <p>Category: {{record.category}}</p>
+    <p>phone: {{record.phone}}</p>
+    <br>
+    <a href="{% url 'update_record' record.id %}" class="btn btn-outline-dark">Edit</a>
+    <a href="{% url 'delete_record' record.id %}" class="btn btn-outline-danger">Delete</a>
+</div>
 {% endblock %}
