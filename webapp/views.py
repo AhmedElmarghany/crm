@@ -92,3 +92,12 @@ def update_record(request, record_id):
     }
     
     return render(request, 'web/update-record.html', context)
+
+
+
+@login_required(login_url='login')
+def delete_record(request, record_id):
+    record = get_object_or_404(Record, id=record_id)
+    record.delete()
+    return redirect('dashboard')
+    

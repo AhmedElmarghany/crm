@@ -26,10 +26,10 @@
         </tr>
       </thead>
       <tbody>
-        {% for record in records %}
+        {% if records %} {% for record in records %}
         <tr>
           <th scope="row">{{record.id}}</th>
-          <td>{{record.first_name}} {{record.last_name}}</td>
+          <td>{{record.first_name|capfirst}} {{record.last_name|capfirst}}</td>
           <td>{{record.category}}</td>
           <td>{{record.phone}}</td>
           <td>{{record.tall}}</td>
@@ -44,7 +44,13 @@
             >
           </td>
         </tr>
-        {% endfor %}
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="9" class="text-center">
+            <strong>You don't have any customers yet</strong>
+          </td>
+        </tr>
+        {% endif %}
       </tbody>
     </table>
   </div>
