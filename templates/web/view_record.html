@@ -7,5 +7,10 @@
     <br>
     <a href="{% url 'update_record' record.id %}" class="btn btn-outline-dark">Edit</a>
     <a href="{% url 'delete_record' record.id %}" class="btn btn-outline-danger">Delete</a>
+
+    {% include 'parts/modal.html' %}
 </div>
+<script>
+
+</script>
 {% endblock %}

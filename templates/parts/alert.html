@@ -1,0 +1,32 @@
+ <style>    
+    .alert{
+        position:absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 86px;
+    }
+ </style>
+{% if messages %}
+{% for message in messages %}
+
+<div {% if message.tags %}class="alert alert-dismissible alert-{{ message.tags }}"{% endif %}>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Done!</strong> {{ message }}
+</div>
+
+{% endfor %}
+{% endif %}
+
+
+
+<script>
+
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('.alert').fadeOut('slow');
+        }, 3000);
+    });
+    $('.btn-close').on("click", function(){
+        $(".alert").fadeOut("slow");
+    });
+</script>

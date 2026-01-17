@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Record
 from django.db.models import Q
 import logging
+from django.contrib import messages
+
 
 def index(request):
     return render(request, 'web/index.html')
@@ -13,6 +15,7 @@ def register(request):
     form = CreateUserForm(request.POST)
     if request.method == 'POST':
         form.save()
+        messages.add_message(request, messages.SUCCESS, "Account Created Successfully")
     else:
         form = CreateUserForm()
     
@@ -33,6 +36,7 @@ def login(request):
 
             if user is not None:
                 auth_login(request, user)
+                messages.add_message(request, messages.SUCCESS, "Successfull login")
                 return redirect('dashboard')
 
     else:
@@ -61,6 +65,8 @@ def create_record(request):
         form = CreateRecordForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.SUCCESS, "Customer Added Successfully")
+            messages.add_message(request, messages.SUCCESS, "Customer Added Successfully")
             return redirect('dashboard')
     else:
         form = CreateRecordForm()
@@ -87,7 +93,9 @@ def update_record(request, record_id):
         form = UpdateRecordForm(request.POST, instance=record)
         if form.is_valid():
             form.save()
-            return redirect('/view/{}'.format(record_id))
+            messages.add_message(request, messages.SUCCESS, "Customer Info Updated Successfully")
+            # return redirect('/view/{}'.format(record_id))
+            return redirect('dashboard')
     
     context = {
         'form': form
@@ -101,6 +109,7 @@ def update_record(request, record_id):
 def delete_record(request, record_id):
     record = get_object_or_404(Record, id=record_id)
     record.delete()
+    messages.add_message(request, messages.SUCCESS, "Customer Deleted Successfully")
     return redirect('dashboard')
     
 

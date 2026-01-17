@@ -14,11 +14,12 @@
   </div>
   <br>
 
+  {% include 'parts/alert.html' %}
   <div class="text-center">
     <form action="{% url 'search' %}" method="GET" class="d-flex">
         <input type="search" name="query" class="form-control mr-sm-2" placeholder="Search by name or id">
         &nbsp;
-        <button type="submit" class="btn btn-outline-dark btn-block p-2">Search</button>
+        <button type="submit" class="btn btn-outline-dark btn-block">Search</button>
     </form>
   </div>
 
