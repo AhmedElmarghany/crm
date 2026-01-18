@@ -14,14 +14,16 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
     ></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>CRM</title>
   </head>
   <body>
-    {% include 'parts/navbar.html' %} 
+    {% include 'parts/navbar.html' %}
     {% block content %} 
     {% endblock content %}
   </body>
