@@ -8,3 +8,12 @@ td, th{
     transform: translateX(-50%);
     top: 86px;
 }
+
+.view-record-table{
+    text-align: left;
+    padding: 2rem;
+}
+
+.view-record-table th, .view-record-table td{
+    padding: .75rem 2rem;
+}

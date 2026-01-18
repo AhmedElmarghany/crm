@@ -1,10 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    <h1>Name: {{record.first_name|capfirst}} {{record.last_name|capfirst}}</h1>
-    <p>Category: {{record.category}}</p>
-    <p>phone: {{record.phone}}</p>
-    <br>
+<div class="container w-50 text-center">
+  <br>
+  <table class="table table-hover view-record-table">
+  <thead>
+    <tr class="table-dark">
+      <th scope="row">Name</th>
+      <th scope="row">{{record.first_name|capfirst}} {{record.last_name|capfirst}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Category</th>
+      <td>{{record.category}}</td>
+    </tr>
+    <tr class="table-light">
+      <th scope="row">Phone</th>
+      <td>{{record.phone}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tall</th>
+      <td>{{record.tall}}</td>
+    </tr>
+    <tr class="table-light">
+      <th scope="row">Weight</th>
+      <td>{{record.weight}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Address</th>
+      <td>{{record.address}}</td>
+    </tr>
+    <tr class="table-light">
+      <th scope="row">Join Date</th>
+      <td>{{record.created_at}}</td>
+    </tr>
+  </tbody>
+</table>
     <a href="{% url 'update_record' record.id %}" class="btn btn-secondary btn-lg w-25">Edit</a>
     <!-- Trigger the modal with a button -->
     <button class="btn btn-danger btn-lg w-25" data-bs-toggle="modal" data-bs-target="#myModal">Delete</button>
