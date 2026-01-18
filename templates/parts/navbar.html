@@ -1,47 +1,63 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
   <div class="container">
-
-    <a class="navbar-brand main-heading" href="{% url 'home' %}"> &nbsp; Django - CRM </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <a class="navbar-brand text" href="{% url 'dashboard' %}"><strong>CRM</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-      <ul class="navbar-nav mr-auto">
-        {% if user.is_authenticated %} 
-        &nbsp; &nbsp; &nbsp;
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <p class="text-primary my-auto">|</p>
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'dashboard' %}"
-            >Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i>
-          </a>
+          <a class="nav-link active" href="{% url 'home' %}">Home</a>
         </li>
-        &nbsp; &nbsp; &nbsp;
+        {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}"
-            >Logout &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i>
-          </a>
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
         </li>
-        &nbsp; &nbsp; &nbsp; 
-        {% else %}
-          &nbsp;     &nbsp;     &nbsp; 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
-          </li>
-          &nbsp;     &nbsp;     &nbsp;
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
-          </li>
-          &nbsp;     &nbsp;     &nbsp; 
         {% endif %}
       </ul>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav md-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{ user }}   </a>
+          <div class="dropdown-menu">
+            <!-- <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> -->
+            <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+          </div>
+        </li>
+      </ul>
+      {% else %}
+      <a class="btn btn-secondary my-sm-0 mx-sm-2" href="{% url 'register' %}">Signup</a>
+      <a class="btn btn-primary my-sm-0" href="{% url 'login' %}">Login</a>
+      {% endif %}
     </div>
   </div>
 </nav>
+
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#myModal">Delete Customer</button> -->
+
+<!-- Modal -->
+<div id="logoutModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Logout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you need to logout?</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn btn-danger mx-sm-2 w-25" href="{% url 'logout' %}">Yes</a>
+        <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>

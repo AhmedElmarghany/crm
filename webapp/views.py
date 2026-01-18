@@ -125,3 +125,9 @@ def search(request):
     except Exception as e:
         logger.error('Error during search %s', e)
     return render(request, 'web/search.html', context={'results': results, 'query': query})
+
+
+
+
+def custom_page_not_found(request, exception):
+    return render(request, 'web/404.html', status=404)

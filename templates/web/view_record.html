@@ -5,12 +5,34 @@
     <p>Category: {{record.category}}</p>
     <p>phone: {{record.phone}}</p>
     <br>
-    <a href="{% url 'update_record' record.id %}" class="btn btn-outline-dark">Edit</a>
-    <a href="{% url 'delete_record' record.id %}" class="btn btn-outline-danger">Delete</a>
+    <a href="{% url 'update_record' record.id %}" class="btn btn-secondary btn-lg w-25">Edit</a>
+    <!-- Trigger the modal with a button -->
+    <button class="btn btn-danger btn-lg w-25" data-bs-toggle="modal" data-bs-target="#myModal">Delete</button>
 
-    {% include 'parts/modal.html' %}
 </div>
-<script>
 
-</script>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Delete customer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you need to delete this customer?</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="btn btn-danger mx-sm-2 w-25" href="{% url 'delete_record' record.id %}">Delete</a>
+        <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
