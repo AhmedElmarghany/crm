@@ -2,6 +2,8 @@
 {% block content %}
 <br>
 <div class="container">
+  <h4>Search results for <strong>"{{ query }}"</strong></h4>
+  <br>
   <table class="table">
     <thead class="thead-dark">
       <tr class="table-dark">
@@ -30,7 +32,7 @@
         <td>
           <a
             href="{% url 'view_record' record.id %}"
-            class="btn btn-outline-primary btn-sm align-start"
+            class="btn btn-outline-info btn-sm align-start"
             >view</a
           >
         </td>

@@ -43,12 +43,13 @@
           <td>
             <a
               href="{% url 'view_record' record.id %}"
-              class="btn btn-outline-primary btn-sm align-start"
+              class="btn btn-outline-info btn-sm align-start"
               >view</a
             >
           </td>
         </tr>
-        {% endfor %} {% else %}
+        {% endfor %} 
+        {% else %}
         <tr>
           <td colspan="9" class="text-center">
             <strong>You don't have any customers yet</strong>
