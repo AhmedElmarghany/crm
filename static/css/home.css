@@ -11,7 +11,8 @@
     min-height: 90vh;
     overflow: hidden;
 }
-.content{
+
+.error-content{
     min-height: 90vh;
 }
 /* Trusted Badge */

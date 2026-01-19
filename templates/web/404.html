@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container text-center mt-4">
-
-    <h1 class="text-center">NOOOOOOOOOOOT Found</h1>
-    <a href="{% url 'dashboard' %}" class="btn btn-outline-primary">Go to dashboard</a>
-</div>
+<section class="error-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-8 text-center">
+                <div class="error-content">
+                    <!-- 404 Number -->
+                    <div class="error-number">404</div>
+                    <!-- Error Message -->
+                    <h1 class="error-title">Page Not Found</h1>
+                    
+                    <p class="error-description">
+                        Oops! The page you're looking for doesn't exist.
+                    </p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="error-actions">
+                        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}

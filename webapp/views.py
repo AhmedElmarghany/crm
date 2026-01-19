@@ -131,3 +131,28 @@ def search(request):
 
 def custom_page_not_found(request, exception):
     return render(request, 'web/404.html', status=404)
+
+# 404 page for test
+def test_page_not_found(request):
+    return render(request, 'web/404.html')
+
+from django.http import JsonResponse, HttpRequest
+from django.views import View
+import json
+
+class JsonSearch(View):
+    def get(self, request: HttpRequest):
+        json_data_as_bytes = request.body
+        data = json.loads(json_data_as_bytes)
+        query = data.get('query')
+
+        results = []
+        try:
+            if query:
+                results = Record.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(id__icontains=query))
+        except Exception as e:
+            logger.error('Error during search %s', e)
+
+        data = [result for result in results.values()]
+        return JsonResponse({'results': data})
+

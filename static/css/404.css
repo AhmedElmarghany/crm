@@ -1,0 +1,137 @@
+/* Error Section - Same gradient background as home page */
+.error-section {
+    position: relative;
+    background: linear-gradient(20deg, #FDE4AD 0%, #FFF5E1 10%, #FFFFFF 50%, #FFFFFF 100%);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Error Content */
+.error-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* 404 Number */
+.error-number {
+    font-size: 180px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 1;
+    margin-bottom: 24px;
+    text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+    letter-spacing: -4px;
+}
+
+/* Error Title */
+.error-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* Error Description */
+.error-description {
+    font-size: 18px;
+    color: #4a4a4a;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Action Buttons */
+/* .error-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+} */
+
+.btn-home {
+    background: linear-gradient(135deg, #FF9D5C 0%, #FFB366 100%);
+    color: #1a1a1a;
+    border: 3px solid #1a1a1a;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.btn-home:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #1a1a1a;
+    color: #1a1a1a;
+}
+
+.btn-back {
+    background: white;
+    color: #1a1a1a;
+    border: 3px solid #1a1a1a;
+    padding: 16px 36px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.btn-back:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #1a1a1a;
+    background: #f8f8f8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .error-number {
+        font-size: 120px;
+    }
+
+    .error-title {
+        font-size: 36px;
+    }
+
+    .error-description {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .btn-home,
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-number {
+        font-size: 100px;
+    }
+
+    .error-title {
+        font-size: 28px;
+    }
+}

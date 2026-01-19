@@ -11,5 +11,8 @@ urlpatterns = [
     path('view/<int:record_id>/', views.view_record, name='view_record'),
     path('update/<int:record_id>/', views.update_record, name='update_record'),
     path('delete/<int:record_id>/', views.delete_record, name='delete_record'),
-    path('search', views.search, name='search')
+    path('search', views.search, name='search'),
+    path('404/', views.test_page_not_found, name='notfound'),
+    # json results
+    path('JsonSearch', views.JsonSearch.as_view()),
 ]

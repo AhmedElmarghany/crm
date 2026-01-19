@@ -20,7 +20,7 @@
       {% if user.is_authenticated %}
       <ul class="navbar-nav md-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{ user }}   </a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, {{ user|capfirst }}   </a>
           <div class="dropdown-menu">
             <!-- <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> -->
             <a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
