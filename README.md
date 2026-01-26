@@ -128,7 +128,7 @@ GET /JsonSearch
 Content-Type: application/json
 
 {
-    "query": "id | name | character in name"
+    "query": "id || name || character in name"
 }
 ```
 
